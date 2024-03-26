@@ -15,14 +15,14 @@ export function generateDoc() {
 
   const { Bolsas, Peritos, Integrantes, dias, mes, anio, hora, processToComplete, id } = currentActa; //* Sacamos las bolsas y los integrantes del acta
   const { observaciones, solicitante, nro_mpf, nro_coop, nro_causa, caratula } = currentActa; //* Desestructuramos el acta
-
+/*
   if (currentActa.processToComplete === "false") {
     //? Si es la primera vez que se imprime, inyecto prop `processToComplete` en true
     axios.put(serverUrl + `/addPropsToActa`, { id: currentActa.id }).catch((err) => {
       console.log(err);
     });
   }
-
+*/
   const Efectos = []; //* Array con todos los efectos con sus nroPrecintoBolsa
   let bagsInProcess = false;
   let integranteNoRepeatLeyend = false;
@@ -59,14 +59,14 @@ export function generateDoc() {
       efecto.nroPrecintoBolsa = bolsa.nroPrecinto;
       efecto.index = index + 1;
       Efectos.push(efecto);
-
+/*
       if (efecto.processToCompleteEfecto !== "true" && efecto.estado === "completo") {
         //? Si es la primera vez que imprime el efecto completado le inyecto prop en true
         axios.put(serverUrl + `/addPropsToEfecto/2`, { id: efecto.id }).catch((e) => {
           console.log(e);
         });
       }
-
+*/
       efecto.Sims.map((s) => {
         //? Si es la primera vez que imprime la sim con extraccion inyecto prop en true
         if (s.tipoExtraccionSim !== "en proceso")
